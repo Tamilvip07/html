@@ -50,4 +50,6 @@ if __name__ == "__main__":
     app = web.Application()
     aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader("./templates"))
     app.add_routes(routes)
-    web.run_app(app)
+    runner = web.AppRunner(app)
+    runner.setup()
+    web.TCPSite(runner, "0.0.0.0", 8080).start()
