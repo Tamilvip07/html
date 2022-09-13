@@ -1,5 +1,5 @@
 aiohttp
 requests
 bs4
-aiohtt_jinja2
+aiohttp_jinja2
 jinja2
