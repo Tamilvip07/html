@@ -1,0 +1,72 @@
+2022-09-13 21:27:52,243 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_protocol.py", line 435, in _handle_request
+    resp = await request_handler(request)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_app.py", line 504, in _handle
+    resp = await handler(request)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp_jinja2\__init__.py", line 232, in wrapped
+    context = await coro(*args)
+  File "D:\VS\ph\main.py", line 27, in verify_number
+    render = {"Phone": info_[0], "Name" : info_[16], "State": info_[1], "Telecomcircle": info_[17], "Operator": info_[
+IndexError: list index out of range
+2022-09-13 21:27:55,861 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_protocol.py", line 435, in _handle_request
+    resp = await request_handler(request)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_app.py", line 504, in _handle
+    resp = await handler(request)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp_jinja2\__init__.py", line 232, in wrapped
+    context = await coro(*args)
+  File "D:\VS\ph\main.py", line 27, in verify_number
+    render = {"Phone": info_[0], "Name" : info_[16], "State": info_[1], "Telecomcircle": info_[17], "Operator": info_[
+IndexError: list index out of range
+2022-09-13 21:42:06,576 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_protocol.py", line 435, in _handle_request
+    resp = await request_handler(request)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_app.py", line 504, in _handle
+    resp = await handler(request)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp_jinja2\__init__.py", line 232, in wrapped
+    context = await coro(*args)
+  File "D:\VS\ph\main.py", line 27, in verify_number
+    render = {"Phone": info_[0], "Name" : info_[1655], "State": info_[1], "Telecomcircle": info_[16], "Operator": info_[
+IndexError: list index out of range
+2022-09-13 21:42:30,345 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_protocol.py", line 435, in _handle_request
+    resp = await request_handler(request)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_app.py", line 504, in _handle
+    resp = await handler(request)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp_jinja2\__init__.py", line 232, in wrapped
+    context = await coro(*args)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\asyncio\coroutines.py", line 136, in coro
+    res = yield from await_meth()
+  File "D:\VS\ph\main.py", line 28, in verify_number
+    render = {"Phone": info_[0], "Name" : info_[1655], "State": info_[1], "Telecomcircle": info_[16], "Operator": info_[
+IndexError: list index out of range
+2022-09-13 21:42:45,553 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_protocol.py", line 435, in _handle_request
+    resp = await request_handler(request)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_app.py", line 504, in _handle
+    resp = await handler(request)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp_jinja2\__init__.py", line 232, in wrapped
+    context = await coro(*args)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\asyncio\coroutines.py", line 136, in coro
+    res = yield from await_meth()
+  File "D:\VS\ph\main.py", line 28, in verify_number
+    render = {"Phone": info_[0], "Name" : info_[1655], "State": info_[1], "Telecomcircle": info_[16], "Operator": info_[
+IndexError: list index out of range
+2022-09-13 21:44:15,398 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_protocol.py", line 435, in _handle_request
+    resp = await request_handler(request)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_app.py", line 504, in _handle
+    resp = await handler(request)
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp_jinja2\__init__.py", line 232, in wrapped
+    context = await coro(*args)
+  File "D:\VS\ph\main.py", line 27, in verify_number
+    render = {"Phone": info_[0], "Name" : info_[15], "State": info_[1], "Telecomcircle": info_[16], "Operator": info_[
+  File "C:\Users\hellx\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\web_response.py", line 553, in __getitem__
+    return self._state[key]
+KeyError: 0
