@@ -1,14 +1,17 @@
-from requests import post, get, exceptions
-from bs4 import BeautifulSoup
 from aiohttp import web
+from bs4 import BeautifulSoup
+from requests import get, post
 
 
 def handle(func):
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except Exception as e:
-            return web.Response(text=open("templates/error.html", "r+").read(), content_type="text/html")
+        except Exception:
+            return web.Response(
+                text=open("templates/error.html", "r+").read(), content_type="text/html"
+            )
+
     return wrapper
 
 
@@ -52,24 +55,21 @@ def phone_info(q: str) -> list:
 
     data = {}
     for i in basic.find_all("tr"):
-        data[i.find("th").text.strip().replace(
-            ":", "")] = i.find("td").text.strip()
+        data[i.find("th").text.strip().replace(":", "")] = i.find("td").text.strip()
     next = basic.findNext("div", {"id": "order_review"})
     for i in next.find_all("tr"):
-        data[i.find("th").text.strip().replace(
-            ":", "")] = i.find("td").text.strip()
+        data[i.find("th").text.strip().replace(":", "")] = i.find("td").text.strip()
     tc_name, tc_carrier = search_phonenumber(q)
-    fmt = [data["Mobile Phone"],
-           data["Telecoms Circle / State"],
-           data["Original Network (First Alloted)"],
-           data["Service Type / Signal"],
-           data["Connection Status"],
-           data[f'+91 {data["Mobile Phone"]} - SIM card distributed at'],
-           data["Owner / Name of the caller"],
-           data["Address / Current GPS Location"],
-           data[
-        "Last Login Location (Facebook / Google Map / Twitter / Instagram )"
-    ],
+    fmt = [
+        data["Mobile Phone"],
+        data["Telecoms Circle / State"],
+        data["Original Network (First Alloted)"],
+        data["Service Type / Signal"],
+        data["Connection Status"],
+        data[f'+91 {data["Mobile Phone"]} - SIM card distributed at'],
+        data["Owner / Name of the caller"],
+        data["Address / Current GPS Location"],
+        data["Last Login Location (Facebook / Google Map / Twitter / Instagram )"],
         data["Last Live location"],
         data["Number of Search History"],
         data["Latest Search Places "],
@@ -77,14 +77,13 @@ def phone_info(q: str) -> list:
         data["Main Language in the telecoms circle "],
         data["Unique search request Ref "],
         tc_name,
-        tc_carrier,       
+        tc_carrier,
     ]
     return fmt
 
 
-
 @handle
-def search_phonenumber(phno:  str) -> list:
+def search_phonenumber(phno: str) -> list:
 
     params = {
         "q": phno,
@@ -92,29 +91,34 @@ def search_phonenumber(phno:  str) -> list:
         "type": "4",
         "locAddr": "",
         "placement": "SEARCHRESULTS,HISTORY,DETAILS",
-        "encoding": "json"
+        "encoding": "json",
     }
     headers = {
         "content-type": "application/json; charset=UTF-8",
         "accept-encoding": "gzip",
         "user-agent": "Truecaller/11.75.5 (Android;10)",
         "clientsecret": "lvc22mp3l1sfv6ujg83rd17btt",
-        "authorization": "Bearer " + "a2i0C--ZjHrjP-gk3zNq11u1KMCWm9I17jsqJ5HHQXbmtmIhx5_vhbIbG6VNirFJ"}
+        "authorization": "Bearer "
+        + "a2i0C--ZjHrjP-gk3zNq11u1KMCWm9I17jsqJ5HHQXbmtmIhx5_vhbIbG6VNirFJ",
+    }
     req = get(
-            'https://search5-noneu.truecaller.com/v2/search', headers=headers, params=params, timeout=10)
+        "https://search5-noneu.truecaller.com/v2/search",
+        headers=headers,
+        params=params,
+        timeout=10,
+    )
     if req.status_code == 429:
-        x = {
-                "errorCode": 429,
-                "errorMessage": "too many requests.",
-                "data": None
-            }
+        x = {"errorCode": 429, "errorMessage": "too many requests.", "data": None}
         return x
-    elif req.json().get('status'):
+    elif req.json().get("status"):
         x = {
-                "errorCode": 401,
-                "errorMessage": "Your previous login was expired.",
-                "data": None
-            }
+            "errorCode": 401,
+            "errorMessage": "Your previous login was expired.",
+            "data": None,
+        }
         return x
     else:
-        return req.json()["data"][0]["name"], req.json()["data"][0]["phones"][0]["carrier"]
+        return (
+            req.json()["data"][0]["name"],
+            req.json()["data"][0]["phones"][0]["carrier"],
+        )
