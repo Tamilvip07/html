@@ -29,8 +29,8 @@ async def verify_number(request) -> web.Response:
     try:
         get_no: str = await request.post()
         number: str = get_no["phone"]
-        info_ = phone_info(number)
-        render = {
+        info_: list = phone_info(number)
+        render: dict = {
             "Phone": info_[0],
             "Name": info_[15],
             "State": info_[1],
@@ -50,4 +50,4 @@ if __name__ == "__main__":
     app = web.Application()
     aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader("./templates"))
     app.add_routes(routes)
-    web.run_app(app, port=5000)
+    web.run_app(app, port=8080)
