@@ -1,5 +1,6 @@
 import logging
 
+from os import getenv
 import aiohttp_jinja2
 import jinja2
 from aiohttp import web
@@ -50,4 +51,4 @@ if __name__ == "__main__":
     app = web.Application()
     aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader("./templates"))
     app.add_routes(routes)
-    web.run_app(app, port=8080)
+    web.run_app(app, port=getenv("PORT"))
