@@ -1,6 +1,6 @@
 import logging
-
 from os import getenv
+
 import aiohttp_jinja2
 import jinja2
 from aiohttp import web
